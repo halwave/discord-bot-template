@@ -16,7 +16,9 @@ if (!process.env.DISCORD_TOKEN) {
 export const Configuration = {
   token: process.env.DISCORD_TOKEN,
   intents: [
+    GatewayIntentBits.Guilds, // Access to guild-related events and data
     GatewayIntentBits.GuildMessages, // Receive message events from text channels in guilds
     GatewayIntentBits.MessageContent, // Access to message content, required for traditional text commands, set via Discord Developer Portal
   ],
+  prefix: '!',
 } as const;

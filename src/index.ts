@@ -1,5 +1,6 @@
 import { createClient } from './client';
 import { Configuration } from './config';
+import { loadEvents } from './handlers/event-handler';
 import { CustomClient } from './types/CustomClient';
 
 async function main() {
@@ -7,9 +8,8 @@ async function main() {
     console.log('Starting bot...');
     const client: CustomClient = createClient();
 
-    client.once('clientReady', () => {
-      console.log(`Logged in as ${client?.user?.tag}`);
-    });
+    console.log('Loading commands and events...');
+    loadEvents(client);
 
     console.log('Logging in...');
     await client.login(Configuration.token);
